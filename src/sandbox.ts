@@ -1,23 +1,10 @@
-let greet: Function;
+type StringOrNum = string | number;
+type objWithName = { name: string, uid: StringOrNum };
 
-greet = () => {
-  console.log("hello");
-};
+const logDetails = (uid: StringOrNum, item: string) => {
+  console.log(`${item} has uid of ${uid}`);
+}
 
-// this will throw an error for c not being used
-/*function add = (a: number, b: number, c?: number | string) {
-  console.log(a + b)
-}*/
-
-const add = (a: number, b: number, c?: number | string): void => {
-  console.log(a + b);
-};
-
-add(5, 10);
-
-const minus = (a: number, b: number): number => {
-  return a + b;
-};
-
-let result = minus(10, 7);
-
+const greet = (user: objWithName) => {
+  console.log(`${user.name} says hello`);
+}
