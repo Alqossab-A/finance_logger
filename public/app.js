@@ -1,6 +1,19 @@
 "use strict";
-const anchor = document.querySelector('a');
-console.log(anchor === null || anchor === void 0 ? void 0 : anchor.href);
+// Classes
+class Invoice {
+    constructor(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    format() {
+        return `${this.client} owes $${this.amount} for ${this.details}`;
+    }
+}
+const invOne = new Invoice('mario', 'work', 250);
+let invoices = [];
+invoices.push(invOne);
+console.log(invoices);
 const form = document.querySelector('.new-item-form');
 //console.log(form.children);
 // Inputs

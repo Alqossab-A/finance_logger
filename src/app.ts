@@ -1,6 +1,25 @@
-const anchor = document.querySelector('a');
+// Classes
+class Invoice {
+  readonly client: string;
+  private details: string;
+  public amount: number;
 
-console.log(anchor?.href);
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
+
+  format() {
+    return `${this.client} owes $${this.amount} for ${this.details}`;
+  }
+}
+
+const invOne = new Invoice('mario', 'work', 250);
+
+let invoices: Invoice[] = [];
+invoices.push(invOne);
+console.log(invoices);
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 //console.log(form.children);
