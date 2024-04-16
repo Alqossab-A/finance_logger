@@ -1,3 +1,5 @@
+import { } from '../interfaces/HasFromatter.js'
+
 export class Invoice {
   constructor(
     readonly client: string,
