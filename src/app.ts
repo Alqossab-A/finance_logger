@@ -18,40 +18,16 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
 
+  let values: [string, string, number];
+  values = [toFrom.value, details.value, amount.valueAsNumber];
+
   let doc: HasFormatter;
 
   if (type.value === 'invoice') {
-    doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    doc = new Payment(...values);
   }
 
   list.render(doc, type.value, 'end');
 });
-
-const addUID = <T extends object>(obj: T) => {
-  let uid = Math.floor(Math.random() * 100);
-  return { ...obj, uid };
-}
-
-let docOne = addUID({ name: 'you', age: 39 });
-
-console.log(docOne.name);
-
-interface Resource<T> {
-  uid: number;
-  resName: string;
-  data: T
-}
-
-const docThree: Resource<string> = {
-  uid: 1,
-  resName: 'person',
-  data: 'hi'
-}
-
-const docFour: Resource<number[]> = {
-  uid: 3,
-  resName: 'person',
-  data: [2, 3, 5]
-}
